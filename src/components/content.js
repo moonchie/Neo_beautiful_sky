@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import Chart from 'react-google-charts';
 import axios from 'axios';
 import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-
-
-
 import './content.css';
 
 
@@ -44,7 +39,6 @@ class Graph extends Component {
         .then(res => {
             const data = res.data.near_earth_objects;
             this.setState(data);
-            console.log(data);
         })
         .catch((err) => {
             console.log(err)
