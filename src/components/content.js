@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import Chart from 'react-google-charts';
 import axios from 'axios';
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
 
 
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
+import './content.css';
 
 
 const url = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY";
@@ -11,15 +16,9 @@ const url = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY";
 class Content extends Component {
     render() {
         return(
-            <Card>
-            <CardHeader
-                title="Summary of all the Neo's"
-                subtitle="There are 20 neo in total"
-                actAsExpander={true}
-                showExpandableButton={true}
-                />
+            <div>
                 <Graph />
-            </Card>
+            </div>
         )
     }
 }
@@ -54,27 +53,28 @@ class Graph extends Component {
 
     render() {
         return (
-            <div style={{ display: 'flex', maxWidth: 900 }}>
-                <Chart
-                    width={600}
-                    height={900}
-                    chartType="BarChart"
-                    loader={<div>Loading Chart</div>}
-                    data={this.makeGraph(this.state)}
-                    options={{
-                    title: 'Distance difference of NEO',
-                    chartArea: { width: '50%' },
-                    hAxis: {
-                        title: 'Min Estimated Diameter(km)',
-                        minValue: 0,
-                    },
-                    vAxis: {
-                        title: 'Neo names',
-                    },
-                    }}
-                    legendToggle
-                />
-            </div>
+            <Card>
+                <CardContent>
+                    <h1>NEO Earth Close Approaches</h1>
+                    <p>The following graph shows close approaches to the Earth by near-Earth objects (NEOs). The range is estimated from H.</p>
+                    <Chart className="chart"
+                        chartType="BarChart"
+                        loader={<div>Loading Chart</div>}
+                        data={this.makeGraph(this.state)}
+                        options={{
+                        chartArea: { width: '50%' },
+                        hAxis: {
+                            title: 'Min Estimated Diameter(km)',
+                            minValue: 0,
+                        },
+                        vAxis: {
+                            title: 'Neo names',
+                        },
+                        }}
+                        legendToggle
+                    />
+                    </CardContent>
+            </Card>
         )
     }
 }

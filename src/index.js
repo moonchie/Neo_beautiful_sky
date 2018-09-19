@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Content from './components/content';
-import Button from '@material-ui/core/Button';
 
-
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
+import './index.css';
 
 
 // style for material design
@@ -20,11 +17,10 @@ const styles = {
 class NeoApp extends Component {
     render() {
         const title = "Neo App";
-        const subtitle = "An app to track the Neo in the sky!"
 
         return (
           <MuiThemeProvider>
-            <Header title={title} subtitle={subtitle} />
+            <Header title={title} />
             <Content />
         </MuiThemeProvider>
         );
@@ -38,7 +34,6 @@ class Header extends Component {
         <div className="App">
             {/* <h1 className="display-3">{this.props.title}</h1> */}
             <AppBar title={<span style={styles.title}>{this.props.title}</span>} showMenuIconButton= {false}>
-            <h3 className="lead">{this.props.subtitle}</h3>
             </AppBar>
 
         </div>
